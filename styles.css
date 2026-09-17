@@ -1,0 +1,91 @@
+:root {
+  --ink: #17221f;
+  --muted: #718079;
+  --paper: #f5f5ef;
+  --line: #d9ddd3;
+  --lime: #d4ff4d;
+  --blue: #95c9ff;
+  --mono: "DM Mono", monospace;
+  --sans: "Manrope", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--paper); }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--sans);
+  background:
+    radial-gradient(circle at 82% 6%, rgba(212, 255, 77, .28), transparent 19rem),
+    var(--paper);
+}
+
+a { color: inherit; text-decoration: none; }
+
+.site-shell { width: min(100% - 48px, 1240px); margin: 0 auto; }
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 106px;
+  border-bottom: 1px solid var(--line);
+}
+
+.logo { display: inline-flex; align-items: center; gap: 10px; font-size: 1.35rem; font-weight: 800; letter-spacing: -.09em; }
+.logo > span:last-child span { color: #58635c; }
+.logo-mark { position: relative; display: inline-block; width: 25px; height: 24px; transform: skewX(-18deg); }
+.logo-mark i { position: absolute; width: 15px; height: 9px; background: var(--ink); border-radius: 8px 2px; }
+.logo-mark i:first-child { top: 2px; left: 0; }
+.logo-mark i:last-child { right: 0; bottom: 2px; background: var(--lime); }
+.header-note, .eyebrow, .venture-type, .card-index { font: 500 .68rem/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.header-note { color: var(--muted); }
+
+.intro { min-height: 450px; display: flex; flex-direction: column; justify-content: center; padding: 70px 0 65px; }
+.eyebrow { margin: 0 0 18px; color: var(--muted); }
+h1, h2, h3, p { margin-top: 0; }
+h1 { max-width: 800px; margin-bottom: 24px; font-size: clamp(3.5rem, 8vw, 7.25rem); line-height: .94; letter-spacing: -.085em; }
+h1 em { color: #527669; font-style: normal; }
+.intro-copy { max-width: 430px; margin: 0; color: #56635c; font-size: 1.03rem; line-height: 1.7; }
+
+.ventures { padding: 49px 0 95px; border-top: 1px solid var(--line); }
+.section-heading { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 26px; }
+.section-heading .eyebrow { margin: 0; }
+h2 { margin: 0; font-size: clamp(1.05rem, 2vw, 1.4rem); letter-spacing: -.045em; }
+.venture-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.venture-card { position: relative; min-height: 305px; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; border-radius: 3px; transition: transform .25s ease, box-shadow .25s ease; }
+.venture-card:hover, .venture-card:focus-visible { transform: translateY(-5px); box-shadow: 0 18px 28px rgba(23, 34, 31, .12); }
+.coming-soon:hover { transform: none; box-shadow: none; }
+.venture-card:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.app-card { background: var(--lime); }
+.carver-card { background: var(--blue); }
+.card-index { position: absolute; top: 27px; left: 30px; }
+.venture-type { margin-bottom: 8px; color: rgba(23, 34, 31, .62); }
+h3 { margin-bottom: 10px; font-size: clamp(2rem, 4vw, 3.1rem); letter-spacing: -.075em; line-height: 1; }
+.card-copy { max-width: 300px; margin: 0; font-size: .92rem; line-height: 1.55; }
+.arrow { position: absolute; right: 28px; top: 22px; font: 400 2.1rem/1 var(--sans); transition: transform .25s ease; }
+.venture-card:hover .arrow { transform: translate(4px, -4px); }
+.status { position: absolute; top: 26px; right: 30px; padding: 5px 8px; border: 1px solid rgba(23, 34, 31, .35); border-radius: 99px; font: 500 .62rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+
+.site-footer { display: grid; grid-template-columns: 1fr 1fr 1fr; padding: 27px 0 32px; border-top: 1px solid var(--line); color: var(--muted); font: 400 .67rem/1.5 var(--mono); letter-spacing: .02em; }
+.site-footer p { margin: 0; }
+.site-footer a { justify-self: center; color: var(--ink); border-bottom: 1px solid #aab4aa; }
+.site-footer p:last-child { justify-self: end; }
+
+@media (max-width: 650px) {
+  .site-shell { width: min(100% - 32px, 1240px); }
+  .site-header { min-height: 82px; }
+  .header-note { display: none; }
+  .intro { min-height: 420px; padding: 62px 0; }
+  .section-heading { display: block; }
+  .section-heading .eyebrow { margin-bottom: 10px; }
+  .venture-grid { grid-template-columns: 1fr; }
+  .venture-card { min-height: 260px; padding: 25px; }
+  .card-index { top: 23px; left: 25px; }
+  .arrow { right: 23px; top: 19px; }
+  .status { top: 22px; right: 25px; }
+  .site-footer { grid-template-columns: 1fr; gap: 11px; }
+  .site-footer a, .site-footer p:last-child { justify-self: start; }
+}
