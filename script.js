@@ -1,19 +1,19 @@
-document.querySelector("#year").textContent = new Date().getFullYear();
+document.querySelector('#year').textContent = new Date().getFullYear()
 
-const rotatingWord = document.querySelector(".rotating-word");
-const words = ["lab.", "studio.", "stage.", "school."];
-const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const rotatingWord = document.querySelector('.rotating-word')
+const words = ['stage.', 'studio.', 'school.', 'lab.']
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
 
 if (rotatingWord && !reduceMotion.matches) {
-  let wordIndex = 0;
+  let wordIndex = 0
 
   window.setInterval(() => {
-    rotatingWord.classList.add("is-changing");
+    rotatingWord.classList.add('is-changing')
 
     window.setTimeout(() => {
-      wordIndex = (wordIndex + 1) % words.length;
-      rotatingWord.textContent = words[wordIndex];
-      rotatingWord.classList.remove("is-changing");
-    }, 180);
-  }, 2800);
+      wordIndex = (wordIndex + 1) % words.length
+      rotatingWord.textContent = words[wordIndex]
+      rotatingWord.classList.remove('is-changing')
+    }, 180)
+  }, 2800)
 }
