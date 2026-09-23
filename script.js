@@ -15,8 +15,8 @@ const isDarkTheme = () =>
 const updateFavicon = () => {
   if (favicon) {
     favicon.href = isDarkTheme()
-      ? 'switxhlabs_logo2.svg'
-      : 'switxhlabs_logo.svg'
+      ? 'favicon_dark.svg'
+      : 'favicon_light.svg'
   }
 }
 

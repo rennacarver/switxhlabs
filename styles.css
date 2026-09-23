@@ -3,7 +3,7 @@
   --muted: #718079;
   --paper: #f5f5ef;
   --line: #d9ddd3;
-  --lime: #d4ff4d;
+  --lime: #c5ec45;
   --logo-lime: #5d8500;
   --blue: #95c9ff;
   --logo-muted: #58635c;
@@ -24,7 +24,7 @@
     --paper: #121a17;
     --line: #344039;
     --blue: #83b7ec;
-    --logo-muted: #b9c5bc;
+    --logo-muted: var(--lime);
     --headline-accent: #a6cdbb;
     --copy: #c0cbc4;
     --link-line: #68776d;
@@ -40,7 +40,7 @@
   --paper: #121a17;
   --line: #344039;
   --blue: #83b7ec;
-  --logo-muted: #b9c5bc;
+  --logo-muted: var(--lime);
   --headline-accent: #a6cdbb;
   --copy: #c0cbc4;
   --link-line: #68776d;
@@ -95,37 +95,13 @@ a {
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  font-family: var(--sans);
+  font-family: var(--mono);
   font-size: 1.35rem;
-  font-weight: 800;
+  font-weight: 400;
   letter-spacing: -0.06em;
 }
 .logo > span:last-child span {
   color: var(--logo-muted);
-}
-.logo-mark {
-  position: relative;
-  display: inline-block;
-  width: 25px;
-  height: 24px;
-  transform: skewX(-18deg);
-}
-.logo-mark i {
-  position: absolute;
-  width: 15px;
-  height: 9px;
-  background: var(--ink);
-  border-radius: 8px 2px;
-}
-.logo-mark i:first-child {
-  top: 2px;
-  left: 0;
-}
-.logo-mark i:last-child {
-  right: 0;
-  bottom: 2px;
-  background: var(--logo-lime);
 }
 .header-note,
 .eyebrow,
