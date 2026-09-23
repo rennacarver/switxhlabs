@@ -24,7 +24,7 @@
     --paper: #121a17;
     --line: #344039;
     --blue: #83b7ec;
-    --logo-muted: var(--lime);
+    --logo-muted: var(--muted);
     --headline-accent: #a6cdbb;
     --copy: #c0cbc4;
     --link-line: #68776d;
@@ -40,7 +40,7 @@
   --paper: #121a17;
   --line: #344039;
   --blue: #83b7ec;
-  --logo-muted: var(--lime);
+  --logo-muted: var(--muted);
   --headline-accent: #a6cdbb;
   --copy: #c0cbc4;
   --link-line: #68776d;
@@ -95,10 +95,15 @@ a {
 .logo {
   display: inline-flex;
   align-items: center;
+  gap: 0.4rem;
   font-family: var(--mono);
   font-size: 1.35rem;
   font-weight: 400;
   letter-spacing: -0.06em;
+}
+.logo-mark {
+  width: 1.35rem;
+  height: 1.35rem;
 }
 .logo > span:last-child span {
   color: var(--logo-muted);

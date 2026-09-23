@@ -5,20 +5,11 @@ const words = ['stage.', 'studio.', 'school.', 'lab.']
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
 const themeToggle = document.querySelector('.theme-toggle')
 const darkTheme = window.matchMedia('(prefers-color-scheme: dark)')
-const favicon = document.querySelector('#favicon')
 
 const isDarkTheme = () =>
   document.documentElement.dataset.theme
     ? document.documentElement.dataset.theme === 'dark'
     : darkTheme.matches
-
-const updateFavicon = () => {
-  if (favicon) {
-    favicon.href = isDarkTheme()
-      ? 'favicon_dark.svg'
-      : 'favicon_light.svg'
-  }
-}
 
 const updateThemeToggle = () => {
   const isDark = isDarkTheme()
@@ -28,7 +19,6 @@ const updateThemeToggle = () => {
   themeToggle.innerHTML = isDark
     ? '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>'
     : '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3a9 9 0 1 0 9 9c-5 1-9-3-9-9Z"/></svg>'
-  updateFavicon()
 }
 
 if (themeToggle) {
@@ -45,8 +35,6 @@ if (themeToggle) {
     if (!document.documentElement.dataset.theme) updateThemeToggle()
   })
 }
-
-updateFavicon()
 
 if (rotatingWord && !reduceMotion.matches) {
   let wordIndex = 0
