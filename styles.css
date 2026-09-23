@@ -304,16 +304,34 @@ h3 {
   color: var(--ink);
   border-bottom: 1px solid var(--link-line);
 }
+.site-footer .linkedin-link {
+  display: flex;
+  align-items: center;
+  width: 18px;
+  height: 18px;
+  border: 0;
+}
+.linkedin-link svg {
+  width: 100%;
+  height: 100%;
+}
 .theme-toggle {
   justify-self: center;
+  display: flex;
+  align-items: center;
   padding: 0;
   color: var(--ink);
   font: inherit;
+  font-size: 1rem;
+  line-height: 1;
   letter-spacing: inherit;
   background: none;
   border: 0;
-  border-bottom: 1px solid var(--link-line);
   cursor: pointer;
+}
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
 }
 .theme-toggle:focus-visible {
   outline: 2px solid var(--ink);
