@@ -12,6 +12,11 @@
   --link-line: #aab4aa;
   --shadow: rgba(23, 34, 31, 0.12);
   --card-ink: #17221f;
+  --paper-texture:
+    radial-gradient(rgba(23, 34, 31, 0.055) 0.55px, transparent 0.7px) 0 0 / 7px
+      9px,
+    radial-gradient(rgba(23, 34, 31, 0.035) 0.45px, transparent 0.65px) 3px
+      4px / 11px 13px;
   --mono: 'DM Mono', monospace;
   --sans: 'Manrope', sans-serif;
   color-scheme: light;
@@ -30,6 +35,11 @@
     --link-line: #68776d;
     --shadow: rgba(0, 0, 0, 0.3);
     --logo-lime: #d4ff4d;
+    --paper-texture:
+      radial-gradient(rgba(255, 255, 255, 0.07) 0.55px, transparent 0.7px) 0 0 /
+        7px 9px,
+      radial-gradient(rgba(255, 255, 255, 0.045) 0.45px, transparent 0.65px) 3px
+        4px / 11px 13px;
     color-scheme: dark;
   }
 }
@@ -46,6 +56,11 @@
   --link-line: #68776d;
   --shadow: rgba(0, 0, 0, 0.3);
   --logo-lime: #d4ff4d;
+  --paper-texture:
+    radial-gradient(rgba(255, 255, 255, 0.07) 0.55px, transparent 0.7px) 0 0 /
+      7px 9px,
+    radial-gradient(rgba(255, 255, 255, 0.045) 0.45px, transparent 0.65px) 3px
+      4px / 11px 13px;
   color-scheme: dark;
 }
 
@@ -71,7 +86,7 @@ body {
       rgba(212, 255, 77, 0.28),
       transparent 19rem
     ),
-    var(--paper);
+    var(--paper-texture), var(--paper);
 }
 
 a {
@@ -89,6 +104,7 @@ a {
   align-items: center;
   justify-content: space-between;
   min-height: 106px;
+  /* background: var(--paper-texture), var(--paper); */
   border-bottom: 1px solid var(--line);
 }
 
@@ -272,6 +288,7 @@ h3 {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   padding: 27px 0 32px;
+  background: var(--paper-texture), var(--paper);
   border-top: 1px solid var(--line);
   color: var(--muted);
   font: 400 0.67rem/1.5 var(--mono);
