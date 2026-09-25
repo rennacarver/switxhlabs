@@ -1,2 +1,2 @@
 # switxhlabs
-Website for SwitxhLabs
+Website for switxhlabs
