@@ -167,13 +167,31 @@ h1 em {
 .rotating-word {
   display: inline-block;
   min-width: 6.1ch;
-  transition:
-    opacity 0.18s ease,
-    transform 0.18s ease;
 }
-.rotating-word.is-changing {
-  opacity: 0;
-  transform: translateY(-0.12em);
+.type-cursor {
+  display: inline-block;
+  width: 0.06em;
+  height: 0.75em;
+  margin-left: 0.05em;
+  background: currentColor;
+  animation: cursor-blink 1s steps(1) infinite;
+}
+.rotating-word.is-typing .type-cursor {
+  animation: none;
+}
+@keyframes cursor-blink {
+  50% {
+    opacity: 0;
+  }
+}
+/* Read by screen readers; shown in place of the typing effect when motion is reduced */
+.static-words {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 .intro-copy {
   max-width: 430px;
@@ -398,6 +416,14 @@ h3 {
 
 @media (prefers-reduced-motion: reduce) {
   .rotating-word {
-    transition: none;
+    display: none;
+  }
+  .static-words {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
+    white-space: normal;
   }
 }

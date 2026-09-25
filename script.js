@@ -1,8 +1,8 @@
 document.querySelector('#year').textContent = new Date().getFullYear()
 
 const rotatingWord = document.querySelector('.rotating-word')
+const typedWord = document.querySelector('.typed-word')
 const words = ['stage.', 'studio.', 'school.', 'lab.']
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
 const themeToggle = document.querySelector('.theme-toggle')
 const darkTheme = window.matchMedia('(prefers-color-scheme: dark)')
 const logoMark = document.querySelector('.logo-mark')
@@ -38,16 +38,33 @@ if (themeToggle) {
   })
 }
 
-if (rotatingWord && !reduceMotion.matches) {
+const wait = (ms) => new Promise((resolve) => window.setTimeout(resolve, ms))
+
+// Runs even when motion is reduced: CSS hides it and shows the static word list instead
+const typeWords = async () => {
   let wordIndex = 0
 
-  window.setInterval(() => {
-    rotatingWord.classList.add('is-changing')
+  while (true) {
+    await wait(2200)
+    rotatingWord.classList.add('is-typing')
 
-    window.setTimeout(() => {
-      wordIndex = (wordIndex + 1) % words.length
-      rotatingWord.textContent = words[wordIndex]
-      rotatingWord.classList.remove('is-changing')
-    }, 180)
-  }, 2800)
+    const word = words[wordIndex]
+    for (let i = word.length - 1; i >= 0; i--) {
+      typedWord.textContent = word.slice(0, i)
+      await wait(55)
+    }
+
+    wordIndex = (wordIndex + 1) % words.length
+    const nextWord = words[wordIndex]
+    await wait(250)
+
+    for (let i = 1; i <= nextWord.length; i++) {
+      typedWord.textContent = nextWord.slice(0, i)
+      await wait(95)
+    }
+
+    rotatingWord.classList.remove('is-typing')
+  }
 }
+
+if (rotatingWord && typedWord) typeWords()
