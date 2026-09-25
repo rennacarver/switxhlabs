@@ -118,7 +118,7 @@ a {
   letter-spacing: -0.06em;
 }
 .logo-mark {
-  width: 1.35rem;
+  width: auto;
   height: 1.35rem;
 }
 .logo > span:last-child span {
