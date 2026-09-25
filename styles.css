@@ -119,7 +119,7 @@ a {
 }
 .logo-mark {
   width: auto;
-  height: 1.35rem;
+  height: 1.2rem;
 }
 .logo > span:last-child span {
   color: var(--logo-muted);
