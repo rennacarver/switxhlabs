@@ -5,6 +5,7 @@ const words = ['stage.', 'studio.', 'school.', 'lab.']
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
 const themeToggle = document.querySelector('.theme-toggle')
 const darkTheme = window.matchMedia('(prefers-color-scheme: dark)')
+const logoMark = document.querySelector('.logo-mark')
 
 const isDarkTheme = () =>
   document.documentElement.dataset.theme
@@ -14,6 +15,7 @@ const isDarkTheme = () =>
 const updateThemeToggle = () => {
   const isDark = isDarkTheme()
 
+  if (logoMark) logoMark.src = isDark ? 'site-logo-dark.svg' : 'site-logo.svg'
   themeToggle.setAttribute('aria-pressed', String(isDark))
   themeToggle.setAttribute('aria-label', `Switch to ${isDark ? 'light' : 'dark'}`)
   themeToggle.innerHTML = isDark
