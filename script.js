@@ -5,25 +5,24 @@ const typedWord = document.querySelector('.typed-word')
 const words = ['stage.', 'classroom.', 'studio.', 'lab.']
 const themeToggle = document.querySelector('.theme-toggle')
 const darkTheme = window.matchMedia('(prefers-color-scheme: dark)')
-const logoMark = document.querySelector('.logo-mark')
 
 const isDarkTheme = () =>
   document.documentElement.dataset.theme
     ? document.documentElement.dataset.theme === 'dark'
     : darkTheme.matches
 
+// The logos swap in CSS; this only keeps the toggle's icon and label in sync
 const updateThemeToggle = () => {
   const isDark = isDarkTheme()
 
-  if (logoMark) logoMark.src = isDark ? 'site-logo-dark.svg' : 'site-logo.svg'
   themeToggle.setAttribute('aria-pressed', String(isDark))
   themeToggle.setAttribute(
     'aria-label',
     `Switch to ${isDark ? 'light' : 'dark'}`,
   )
   themeToggle.innerHTML = isDark
-    ? '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>'
-    : '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>'
+    ? '<svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>'
+    : '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>'
 }
 
 if (themeToggle) {
@@ -43,7 +42,7 @@ if (themeToggle) {
 
 const wait = (ms) => new Promise((resolve) => window.setTimeout(resolve, ms))
 
-// Runs even when motion is reduced: CSS hides it and shows the static word list instead
+// Runs even when motion is reduced: CSS hides it and shows the static line instead
 const typeWords = async () => {
   let wordIndex = 0
 

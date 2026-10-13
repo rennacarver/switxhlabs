@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
@@ -21,63 +21,125 @@
     <div class="site-shell">
       <header class="site-header">
         <a class="logo" href="/" aria-label="switxhlabs home">
-          <img
-            class="logo-mark"
-            src="site-logo.svg"
-            alt=""
-            aria-hidden="true"
-          />
-          <!-- <span>switxh<span>labs</span></span> -->
+          <img class="for-light" src="site-logo.svg" alt="" />
+          <img class="for-dark" src="site-logo-dark.svg" alt="" />
         </a>
-        <span class="header-note">Product studio</span>
+        <nav class="site-nav" aria-label="Main">
+          <a href="#products">products</a>
+          <a class="button-outline" href="mailto:hello@switxhlabs.com"
+            >say hello</a
+          >
+          <button
+            class="theme-toggle"
+            type="button"
+            aria-label="Switch to dark"
+            aria-pressed="false"
+          >
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+            </svg>
+          </button>
+        </nav>
       </header>
 
       <main>
         <section class="intro" aria-labelledby="intro-title">
           <p class="eyebrow">Education · Entertainment · Software/AI</p>
           <h1 id="intro-title">
-            All the world's<br />a
-            <em
-              ><span class="rotating-word" aria-hidden="true"
-                ><span class="typed-word">stage.</span
+            <!-- Motion: types through stage. → classroom. → studio. → lab. -->
+            <span class="hero-animated" aria-hidden="true"
+              >All the world's<br />a
+              <span class="rotating-word"
+                ><span class="marked"
+                  ><span class="typed-word">stage.</span
+                  ><svg
+                    class="marker"
+                    viewBox="0 0 200 12"
+                    preserveAspectRatio="none"
+                  >
+                    <path d="M3 7 C 40 3, 80 10, 120 6 S 180 4, 197 7" /></svg></span
                 ><span class="type-cursor"></span></span
-              ><span class="static-words"
-                >stage.<span class="static-more">
-                  <span class="punct">...a </span> classroom,
-                  <span class="punct">a</span> studio,
-                  <span class="punct"> &amp;</span> lab.</span
-                ></span
-              ></em
-            >
+            ></span>
+            <!-- Read by screen readers; shown in place of the typing when motion is reduced -->
+            <span class="hero-static"
+              >All the world's<br />a
+              <span class="struck"
+                >stage.<svg
+                  class="strike"
+                  aria-hidden="true"
+                  viewBox="0 0 200 20"
+                  preserveAspectRatio="none"
+                >
+                  <path d="M3 12 C 50 8, 120 14, 197 6" /></svg></span
+              ><br />a
+              <span class="marked"
+                >classroom,<svg
+                  class="marker"
+                  aria-hidden="true"
+                  viewBox="0 0 200 12"
+                  preserveAspectRatio="none"
+                >
+                  <path d="M3 7 C 40 3, 80 10, 120 6 S 180 4, 197 7" /></svg
+              ></span>
+              a
+              <span class="marked"
+                >studio,<svg
+                  class="marker"
+                  aria-hidden="true"
+                  viewBox="0 0 200 12"
+                  preserveAspectRatio="none"
+                >
+                  <path d="M3 6 C 50 9, 100 3, 150 7 S 190 6, 197 5" /></svg
+              ></span>
+              <br />&amp;
+              <span class="marked"
+                >lab.<svg
+                  class="marker"
+                  aria-hidden="true"
+                  viewBox="0 0 200 12"
+                  preserveAspectRatio="none"
+                >
+                  <path d="M3 8 C 60 4, 110 9, 197 5" /></svg></span
+            ></span>
           </h1>
           <p class="intro-copy">
             switxhlabs is a product studio working where education,
             entertainment, and software meet—crafting delightful, interactive
             experiences for learning, for play, and everything in between.
           </p>
+          <div class="intro-actions">
+            <a class="button-solid" href="#products"
+              >explore what we’re building →</a
+            >
+            <a class="text-link" href="mailto:hello@switxhlabs.com"
+              >hello@switxhlabs.com</a
+            >
+          </div>
         </section>
 
-        <section class="ventures" aria-labelledby="ventures-title">
+        <section
+          id="products"
+          class="ventures"
+          aria-labelledby="ventures-title"
+        >
           <div class="section-heading">
             <p class="eyebrow">Our products</p>
             <h2 id="ventures-title">Explore what we’re building.</h2>
           </div>
 
           <div class="venture-grid">
-            <div
-              class="venture-card app-card coming-soon"
+            <article
+              class="venture-card coming-soon"
               aria-label="Sketxh App, coming soon"
             >
               <span class="card-index">01</span>
-              <div>
-                <p class="venture-type">Product · Coming soon</p>
-                <h3>Sketxh App</h3>
-                <p class="card-copy">
-                  A new product from switxhlabs. Coming soon.
-                </p>
-              </div>
-              <span class="status" aria-hidden="true">Soon</span>
-            </div>
+              <p class="venture-type">Product · Coming soon</p>
+              <h3>Sketxh App</h3>
+              <p class="card-copy">
+                A new product from switxhlabs. Coming soon.
+              </p>
+              <span class="status" aria-hidden="true">soon</span>
+            </article>
 
             <a
               class="venture-card carver-card"
@@ -85,57 +147,41 @@
               target="_blank"
               rel="noreferrer"
             >
-              <span class="card-index">02</span>
-              <div>
-                <p class="venture-type">Learning platform</p>
-                <h3>Project Carver</h3>
-                <p class="card-copy">
-                  Bridging formal math theory and spatial intuition through
-                  animation, interactive apps, and story-driven learning.
-                </p>
-              </div>
-              <span class="arrow" aria-hidden="true">↗</span>
+              <span class="card-index"
+                ><span>02</span><span class="arrow" aria-hidden="true">↗</span></span
+              >
+              <span class="venture-type">Learning platform</span>
+              <span class="card-title">Project Carver</span>
+              <span class="card-copy">
+                Bridging formal math theory and spatial intuition through
+                animation, interactive apps, and story-driven learning.
+              </span>
+              <span class="card-link">projectcarver.com</span>
             </a>
           </div>
         </section>
       </main>
 
       <footer class="site-footer">
-        <div class="footer-meta">
-          <p>© <span id="year"></span> switxhlabs</p>
-          <p>experiment. educate. imagine.</p>
+        <div class="footer-hello">
+          <div class="footer-hello-text">
+            <p class="eyebrow">say hello</p>
+            <a class="footer-email" href="mailto:hello@switxhlabs.com"
+              >hello@switxhlabs.com</a
+            >
+          </div>
+          <img class="footer-mark for-light" src="site-mark.svg" alt="" />
+          <img class="footer-mark for-dark" src="site-mark-dark.svg" alt="" />
         </div>
-        <div class="footer-actions">
-          <a href="mailto:hello@switxhlabs.com">hello@switxhlabs.com</a>
+        <div class="footer-meta">
+          <span>© <span id="year"></span> switxhlabs</span>
+          <span>experiment. educate. imagine.</span>
           <a
-            class="linkedin-link"
             href="https://www.linkedin.com/company/switxhlabs"
             target="_blank"
             rel="noreferrer"
-            aria-label="switxhlabs on LinkedIn"
+            >LinkedIn ↗</a
           >
-            <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M20.45 3H3.55A.55.55 0 0 0 3 3.55v16.9c0 .3.25.55.55.55h16.9c.3 0 .55-.25.55-.55V3.55A.55.55 0 0 0 20.45 3ZM8.34 18.34H5.67V9.76h2.67v8.58ZM7 8.59a1.55 1.55 0 1 1 0-3.1 1.55 1.55 0 0 1 0 3.1Zm11.34 9.75h-2.66v-4.17c0-1-.02-2.28-1.39-2.28-1.39 0-1.6 1.09-1.6 2.21v4.24h-2.66V9.76h2.55v1.17h.04c.35-.67 1.22-1.38 2.51-1.38 2.68 0 3.17 1.77 3.17 4.06v4.73Z"
-              />
-            </svg>
-          </a>
-          <button
-            class="theme-toggle"
-            type="button"
-            aria-label="Switch to dark"
-            aria-pressed="false"
-          >
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-            >
-              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-            </svg>
-          </button>
         </div>
       </footer>
     </div>
