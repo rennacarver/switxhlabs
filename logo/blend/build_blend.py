@@ -147,7 +147,7 @@ for name, oc, outline in (("logo-mark", "#17221f", True), ("logo-mark-dark", "#e
 # Mark B: the current "sl" monogram, sketched
 sl_s = [p for p in ink if bbox(p)[2] < 110]
 sl_l = [p for p in muted if bbox(p)[0] > 100 and bbox(p)[2] < 140 and area(p) > 25]
-g = fit([wobble(p, 0.3) for p in sl_s + sl_l], S, 0.42, cy_shift=0.02)
+g = fit([wobble(p, 0.3) for p in sl_s + sl_l], S, 0.52, cy_shift=0.02)
 for name, oc in (("logo-mark-sl", "#17221f"), ("logo-mark-sl-dark", "#edf3ee")):
     body = tile_base(S, oc) + path(g[:len(sl_s)], "#17221f") + path(g[len(sl_s):], "#3f4a43")
     open(f"{OUTDIR}/{name}.svg", "w").write(svg(body, f"0 0 {S} {S}"))
@@ -200,7 +200,7 @@ print("variants ok")
 # Proportions follow the current logo: a ~134-unit tile from the ascender line to just
 # below the baseline, ~36 units before the "s".
 def sl_tile(outline_col, small=False):
-    frac = 0.54 if small else 0.42
+    frac = 0.54 if small else 0.52
     g = fit([wobble(p, 0.3) for p in sl_s + sl_l], S, frac, cy_shift=0.02)
     return tile_base(S, None if small else outline_col) + path(g[:len(sl_s)], "#17221f") + path(g[len(sl_s):], "#3f4a43")
 
