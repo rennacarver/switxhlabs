@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>switxhlabs hero, 1080 × 1080</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #17221f;
+        --muted: #58635b;
+        --paper: #f5f5ef;
+        --lime: #c5ec45;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1080px;
+        height: 1080px;
+        overflow: hidden;
+      }
+      body {
+        color: var(--ink);
+        font-family: 'DM Mono', monospace;
+        background-color: var(--paper);
+        /* The site's glow and paper dots, scaled up for a 1080 frame */
+        background-image:
+          radial-gradient(
+            circle at 82% 6%,
+            rgba(212, 255, 77, 0.34),
+            transparent 560px
+          ),
+          radial-gradient(rgba(23, 34, 31, 0.08) 1.3px, transparent 1.7px);
+        background-size:
+          auto,
+          14px 17px;
+      }
+      .stage {
+        position: absolute;
+        inset: 0;
+        padding: 96px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .logo {
+        height: 52px;
+        width: auto;
+        align-self: flex-start;
+      }
+      .hero {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+      }
+      .eyebrow {
+        margin: 0;
+        font-size: 24px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      h1 {
+        margin: 0;
+        font-weight: 500;
+        font-size: 96px;
+        line-height: 1.16;
+        letter-spacing: -0.04em;
+      }
+      .rotating-word {
+        display: inline-block;
+        white-space: nowrap;
+      }
+      .marked {
+        position: relative;
+        display: inline-block;
+      }
+      .marker {
+        position: absolute;
+        left: 0;
+        bottom: -0.1em;
+        width: 100%;
+        height: 0.16em;
+        overflow: visible;
+      }
+      .marker path {
+        fill: none;
+        stroke: var(--lime);
+        stroke-width: 7;
+        stroke-linecap: round;
+      }
+      .type-cursor {
+        display: inline-block;
+        width: 0.08em;
+        height: 0.78em;
+        margin-left: 0.06em;
+        vertical-align: -0.04em;
+        background: currentColor;
+      }
+      .type-cursor.off {
+        opacity: 0;
+      }
+      .url {
+        align-self: flex-start;
+        font-size: 34px;
+        font-weight: 500;
+        letter-spacing: -0.02em;
+        text-decoration: underline;
+        text-decoration-thickness: 5px;
+        text-decoration-color: var(--lime);
+        text-underline-offset: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="stage" id="stage">
+      <img class="logo" src="../../../site-logo.svg" alt="switxhlabs" />
+      <div class="hero">
+        <p class="eyebrow">Education · Entertainment · Software/AI</p>
+        <h1>
+          All the world's<br />a
+          <span class="rotating-word"
+            ><span class="marked"
+              ><span id="typed">stage.</span
+              ><svg class="marker" viewBox="0 0 200 12" preserveAspectRatio="none">
+                <path d="M3 7 C 40 3, 80 10, 120 6 S 180 4, 197 7" /></svg></span
+            ><span class="type-cursor" id="cursor"></span
+          ></span>
+        </h1>
+      </div>
+      <span class="url">switxhlabs.com</span>
+    </div>
+
+    <script>
+      // A frame-exact version of the site's typing loop: render(ms) draws any moment.
+      // Same rhythm as script.js: hold 2200, delete at 55ms/letter, pause 250, type at 95ms/letter.
+      const FADE_IN = 1600
+      const FIRST_HOLD = 2600 // a little longer than the site so the fade can finish
+      const FINAL_HOLD = 3000
+      const FADE_OUT = 1000
+      // One pass through the list, ending on lab.
+      const words = ['stage.', 'classroom.', 'studio.', 'lab.']
+
+      const steps = []
+      steps.push({ kind: 'hold', dur: FIRST_HOLD, word: words[0] })
+      for (let w = 0; w < words.length - 1; w++) {
+        const from = words[w]
+        const to = words[w + 1]
+        if (w > 0) steps.push({ kind: 'hold', dur: 2200, word: from })
+        steps.push({ kind: 'delete', dur: from.length * 55, word: from })
+        steps.push({ kind: 'pause', dur: 250, word: '' })
+        steps.push({ kind: 'type', dur: to.length * 95, word: to })
+      }
+      steps.push({ kind: 'hold', dur: FINAL_HOLD + FADE_OUT, word: words.at(-1) })
+
+      let t0 = 0
+      for (const s of steps) {
+        s.start = t0
+        t0 += s.dur
+      }
+      window.TOTAL = t0
+
+      const typed = document.getElementById('typed')
+      const cursor = document.getElementById('cursor')
+      const stage = document.getElementById('stage')
+      const ease = (x) => x * x * (3 - 2 * x)
+
+      window.render = (ms) => {
+        const s = steps.find((st) => ms < st.start + st.dur) || steps.at(-1)
+        const local = ms - s.start
+        let text = s.word
+        let blinking = false
+        if (s.kind === 'hold') blinking = true
+        if (s.kind === 'delete') {
+          const gone = Math.min(s.word.length, Math.floor(local / 55) + 1)
+          text = s.word.slice(0, s.word.length - gone)
+        }
+        if (s.kind === 'type') {
+          text = s.word.slice(0, Math.min(s.word.length, Math.floor(local / 95) + 1))
+        }
+        typed.textContent = text
+        cursor.classList.toggle('off', blinking && Math.floor(local / 500) % 2 === 1)
+
+        // Fade in at the start, fade back to paper at the end so the loop restarts cleanly
+        let opacity = 1
+        if (ms < FADE_IN) opacity = ease(ms / FADE_IN)
+        if (ms > window.TOTAL - FADE_OUT) opacity = ease(Math.max(0, (window.TOTAL - ms) / FADE_OUT))
+        stage.style.opacity = opacity
+        stage.style.transform = `translateY(${(1 - opacity) * 14}px)`
+      }
+      render(0)
+    </script>
+  </body>
+</html>
