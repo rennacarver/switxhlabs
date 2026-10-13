@@ -200,17 +200,13 @@ h1 {
 }
 
 /* Lime marker underline, like the one under the logo's x */
-.marked,
-.struck {
+.marked {
   position: relative;
   display: inline-block;
 }
-.marker,
-.strike {
+.marker {
   position: absolute;
   overflow: visible;
-}
-.marker {
   left: 0;
   bottom: -0.1em;
   width: 100%;
@@ -222,22 +218,6 @@ h1 {
   stroke-width: 7;
   stroke-linecap: round;
 }
-.struck {
-  color: var(--muted);
-}
-.strike {
-  left: -3%;
-  top: 46%;
-  width: 106%;
-  height: 0.22em;
-}
-.strike path {
-  fill: none;
-  stroke: var(--ink);
-  stroke-width: 5;
-  stroke-linecap: round;
-}
-
 .rotating-word {
   display: inline-block;
   min-width: 6.1ch;
