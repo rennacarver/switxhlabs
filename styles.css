@@ -450,14 +450,56 @@ h2 {
   height: 52px;
 }
 
+.linkedin-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin: -12px -12px -12px 0;
+  color: var(--ink);
+}
+.linkedin-link svg {
+  width: 20px;
+  height: 20px;
+}
+
 .footer-meta {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
   gap: 12px 32px;
   font-family: var(--mono);
   font-size: 14px;
   color: var(--muted);
+}
+
+/* ---------- Phones: a calmer top of page ---------- */
+
+@media (max-width: 600px) {
+  .site-nav,
+  .intro-actions {
+    display: none;
+  }
+  .intro .eyebrow {
+    white-space: nowrap;
+    font-size: min(13px, 3.2vw);
+    letter-spacing: 0.06em;
+  }
+  /* Footer: copyright + LinkedIn on one row, tagline below */
+  .footer-meta {
+    display: grid;
+    grid-template-columns: 1fr auto;
+  }
+  .footer-meta > span:nth-child(2) {
+    grid-column: 1 / -1;
+    order: 3;
+  }
+  /* Keep "All the world's" on one line down to 320px */
+  h1 {
+    font-size: min(38px, 10vw);
+  }
 }
 
 /* ---------- Reduced motion: the static headline replaces the typing ---------- */
