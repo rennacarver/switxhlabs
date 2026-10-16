@@ -366,20 +366,28 @@ h2 {
   box-shadow: 3px 4px 0 var(--sticker-ink);
 }
 
-/* Ink outline with a lime block offset behind it, like the sl tile */
-.carver-card {
+/* Live products: ink outline with a lime block offset behind it, like the sl tile */
+.live-card {
+  --card-shadow: var(--lime);
   background: var(--card);
   border: 2px solid var(--ink);
   border-radius: var(--cut-b);
-  box-shadow: 10px 12px 0 var(--lime);
+  box-shadow: 10px 12px 0 var(--card-shadow);
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
 }
-.carver-card:hover {
+.live-card:hover {
   opacity: 1;
   transform: translate(-2px, -3px);
-  box-shadow: 13px 16px 0 var(--lime);
+  box-shadow: 13px 16px 0 var(--card-shadow);
+}
+/* Sketxh's block and link underline match its blue beta sticker */
+.sketxh-card {
+  --card-shadow: var(--blue);
+}
+.sketxh-card .card-link {
+  text-decoration-color: var(--blue);
 }
 .card-link {
   margin-top: auto;
@@ -499,8 +507,8 @@ h2 {
     clip-path: none;
     white-space: normal;
   }
-  .carver-card,
-  .carver-card:hover {
+  .live-card,
+  .live-card:hover {
     transition: none;
     transform: none;
   }
